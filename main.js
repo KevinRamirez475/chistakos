@@ -42,3 +42,25 @@ if (searchInput && clearBtn) {
         clearBtn.style.display = 'none';
     });
 } 
+
+// Funcionalidad para guardar los chistes
+function guardarChiste(titulo, contenido, categoria) {
+  fetch('guardar_chiste.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `titulo=${encodeURIComponent(titulo)}&contenido=${encodeURIComponent(contenido)}&categoria=${encodeURIComponent(categoria)}`
+  })
+  .then(res => res.text())
+  .then(data => alert(data));
+}
+
+// Funcionalidad para guardar los videos
+function guardarVideo(titulo, url, descripcion, categoria) {
+  fetch('guardar_video.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `titulo=${encodeURIComponent(titulo)}&url=${encodeURIComponent(url)}&descripcion=${encodeURIComponent(descripcion)}&categoria=${encodeURIComponent(categoria)}`
+  })
+  .then(res => res.text())
+  .then(data => alert(data));
+}
